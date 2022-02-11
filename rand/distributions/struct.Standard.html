@@ -31,7 +31,7 @@ compound types where all component types are supported:</p>
 <li>Tuples (up to 12 elements): each element is generated sequentially.</li>
 <li>Arrays (up to 32 elements): each element is generated sequentially;
 see also <a href="../trait.Rng.html#method.fill" title="Rng::fill"><code>Rng::fill</code></a> which supports arbitrary array length for integer
-types and tends to be faster for <code>u32</code> and smaller types.
+and float types and tends to be faster for <code>u32</code> and smaller types.
 When using <code>rustc</code> ≥ 1.51, enable the <code>min_const_gen</code> feature to support
 arrays larger than 32 elements.
 Note that <a href="../trait.Rng.html#method.fill" title="Rng::fill"><code>Rng::fill</code></a> and <code>Standard</code>’s array support are <em>not</em> equivalent:
