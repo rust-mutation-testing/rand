@@ -243,6 +243,11 @@
 <span id="236">236</span>
 <span id="237">237</span>
 <span id="238">238</span>
+<span id="239">239</span>
+<span id="240">240</span>
+<span id="241">241</span>
+<span id="242">242</span>
+<span id="243">243</span>
 </pre><pre class="rust"><code><span class="doccomment">//! The geometric distribution.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Distribution</span>;
@@ -272,7 +277,7 @@
 <span class="doccomment">/// let v = geo.sample(&amp;mut rand::thread_rng());</span>
 <span class="doccomment">/// println!(&quot;{} is from a Geometric(0.25) distribution&quot;, v);</span>
 <span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde1&quot;</span>, <span class="ident">derive</span>(<span class="ident">serde::Serialize</span>, <span class="ident">serde::Deserialize</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Geometric</span>
 {
@@ -480,7 +485,12 @@
             <span class="ident">results</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> (<span class="ident">x</span> <span class="op">-</span> <span class="ident">mean</span>) <span class="op">*</span> (<span class="ident">x</span> <span class="op">-</span> <span class="ident">mean</span>)).<span class="ident">sum</span>::<span class="op">&lt;</span><span class="ident">f64</span><span class="op">&gt;</span>() <span class="op">/</span> <span class="ident">results</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">f64</span>;
         <span class="macro">assert!</span>((<span class="ident">variance</span> <span class="op">-</span> <span class="ident">expected_variance</span>).<span class="ident">abs</span>() <span class="op">&lt;</span> <span class="ident">expected_variance</span> <span class="op">/</span> <span class="number">10.0</span>);
     }
+
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">geometric_distributions_can_be_compared</span>() {
+        <span class="macro">assert_eq!</span>(<span class="ident">Geometric::new</span>(<span class="number">1.0</span>), <span class="ident">Geometric::new</span>(<span class="number">1.0</span>));
+    }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="rand_distr" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="rand_distr" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

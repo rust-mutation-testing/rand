@@ -376,6 +376,16 @@
 <span id="369">369</span>
 <span id="370">370</span>
 <span id="371">371</span>
+<span id="372">372</span>
+<span id="373">373</span>
+<span id="374">374</span>
+<span id="375">375</span>
+<span id="376">376</span>
+<span id="377">377</span>
+<span id="378">378</span>
+<span id="379">379</span>
+<span id="380">380</span>
+<span id="381">381</span>
 </pre><pre class="rust"><code><span class="comment">// Copyright 2018 Developers of the Rand project.</span>
 <span class="comment">// Copyright 2013 The Rust Project Developers.</span>
 <span class="comment">//</span>
@@ -490,7 +500,7 @@
 <span class="doccomment">/// ```</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`StandardNormal`]: crate::StandardNormal</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde1&quot;</span>, <span class="ident">derive</span>(<span class="ident">serde::Serialize</span>, <span class="ident">serde::Deserialize</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Normal</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>
 <span class="kw">where</span> <span class="ident">F</span>: <span class="ident">Float</span>, <span class="ident">StandardNormal</span>: <span class="ident">Distribution</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>
@@ -605,7 +615,7 @@
 <span class="doccomment">/// let v = log_normal.sample(&amp;mut rand::thread_rng());</span>
 <span class="doccomment">/// println!(&quot;{} is from an ln N(2, 9) distribution&quot;, v)</span>
 <span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde1&quot;</span>, <span class="ident">derive</span>(<span class="ident">serde::Serialize</span>, <span class="ident">serde::Deserialize</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">LogNormal</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>
 <span class="kw">where</span> <span class="ident">F</span>: <span class="ident">Float</span>, <span class="ident">StandardNormal</span>: <span class="ident">Distribution</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>
@@ -746,7 +756,17 @@
         <span class="macro">assert!</span>(<span class="ident">LogNormal::from_mean_cv</span>(<span class="number">0.0</span>, <span class="number">1.0</span>).<span class="ident">is_err</span>());
         <span class="macro">assert!</span>(<span class="ident">LogNormal::from_mean_cv</span>(<span class="number">1.0</span>, <span class="op">-</span><span class="number">1.0</span>).<span class="ident">is_err</span>());
     }
+
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">normal_distributions_can_be_compared</span>() {
+        <span class="macro">assert_eq!</span>(<span class="ident">Normal::new</span>(<span class="number">1.0</span>, <span class="number">2.0</span>), <span class="ident">Normal::new</span>(<span class="number">1.0</span>, <span class="number">2.0</span>));
+    }
+
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">log_normal_distributions_can_be_compared</span>() {
+        <span class="macro">assert_eq!</span>(<span class="ident">LogNormal::new</span>(<span class="number">1.0</span>, <span class="number">2.0</span>), <span class="ident">LogNormal::new</span>(<span class="number">1.0</span>, <span class="number">2.0</span>));
+    }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="rand_distr" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="rand_distr" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

@@ -1655,6 +1655,14 @@
 <span id="1648">1648</span>
 <span id="1649">1649</span>
 <span id="1650">1650</span>
+<span id="1651">1651</span>
+<span id="1652">1652</span>
+<span id="1653">1653</span>
+<span id="1654">1654</span>
+<span id="1655">1655</span>
+<span id="1656">1656</span>
+<span id="1657">1657</span>
+<span id="1658">1658</span>
 </pre><pre class="rust"><code><span class="comment">// Copyright 2018-2020 Developers of the Rand project.</span>
 <span class="comment">// Copyright 2017 The Rust Project Developers.</span>
 <span class="comment">//</span>
@@ -1829,7 +1837,7 @@
 <span class="doccomment">/// [`new`]: Uniform::new</span>
 <span class="doccomment">/// [`new_inclusive`]: Uniform::new_inclusive</span>
 <span class="doccomment">/// [`Rng::gen_range`]: Rng::gen_range</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde1&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde1&quot;</span>, <span class="ident">serde</span>(<span class="ident">bound</span>(<span class="ident">serialize</span> <span class="op">=</span> <span class="string">&quot;X::Sampler: Serialize&quot;</span>)))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde1&quot;</span>, <span class="ident">serde</span>(<span class="ident">bound</span>(<span class="ident">deserialize</span> <span class="op">=</span> <span class="string">&quot;X::Sampler: Deserialize&lt;&#39;de&gt;&quot;</span>)))]</span>
@@ -2075,7 +2083,7 @@
 <span class="doccomment">/// An alternative to using a modulus is widening multiply: After a widening</span>
 <span class="doccomment">/// multiply by `range`, the result is in the high word. Then comparing the low</span>
 <span class="doccomment">/// word against `zone` makes sure our distribution is uniform.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde1&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">UniformInt</span><span class="op">&lt;</span><span class="ident">X</span><span class="op">&gt;</span> {
     <span class="ident">low</span>: <span class="ident">X</span>,
@@ -2463,7 +2471,7 @@
 <span class="doccomment">/// [`new`]: UniformSampler::new</span>
 <span class="doccomment">/// [`new_inclusive`]: UniformSampler::new_inclusive</span>
 <span class="doccomment">/// [`Standard`]: crate::distributions::Standard</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde1&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">UniformFloat</span><span class="op">&lt;</span><span class="ident">X</span><span class="op">&gt;</span> {
     <span class="ident">low</span>: <span class="ident">X</span>,
@@ -3304,7 +3312,15 @@
             ],
         );
     }
+
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">uniform_distributions_can_be_compared</span>() {
+        <span class="macro">assert_eq!</span>(<span class="ident">Uniform::new</span>(<span class="number">1.0</span>, <span class="number">2.0</span>), <span class="ident">Uniform::new</span>(<span class="number">1.0</span>, <span class="number">2.0</span>));
+
+        <span class="comment">// To cover UniformInt</span>
+        <span class="macro">assert_eq!</span>(<span class="ident">Uniform::new</span>(<span class="number">1</span> <span class="kw">as</span> <span class="ident">u32</span>, <span class="number">2</span> <span class="kw">as</span> <span class="ident">u32</span>), <span class="ident">Uniform::new</span>(<span class="number">1</span> <span class="kw">as</span> <span class="ident">u32</span>, <span class="number">2</span> <span class="kw">as</span> <span class="ident">u32</span>));
+    }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="rand" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="rand" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

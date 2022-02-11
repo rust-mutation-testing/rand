@@ -160,6 +160,11 @@
 <span id="153">153</span>
 <span id="154">154</span>
 <span id="155">155</span>
+<span id="156">156</span>
+<span id="157">157</span>
+<span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
 </pre><pre class="rust"><code><span class="comment">// Copyright 2021 Developers of the Rand project.</span>
 <span class="comment">//</span>
 <span class="comment">// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or</span>
@@ -189,7 +194,7 @@
 <span class="doccomment">/// let val: f64 = thread_rng().sample(Gumbel::new(0.0, 1.0).unwrap());</span>
 <span class="doccomment">/// println!(&quot;{}&quot;, val);</span>
 <span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde1&quot;</span>, <span class="ident">derive</span>(<span class="ident">serde::Serialize</span>, <span class="ident">serde::Deserialize</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Gumbel</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>
 <span class="kw">where</span>
@@ -314,7 +319,12 @@
             .<span class="ident">zip</span>(<span class="kw-2">&amp;</span><span class="ident">probabilities</span>)
             .<span class="ident">all</span>(<span class="op">|</span>(<span class="ident">p_hat</span>, <span class="ident">p</span>)<span class="op">|</span> (<span class="ident">p_hat</span> <span class="op">-</span> <span class="ident">p</span>).<span class="ident">abs</span>() <span class="op">&lt;</span> <span class="number">0.003</span>))
     }
+
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">gumbel_distributions_can_be_compared</span>() {
+        <span class="macro">assert_eq!</span>(<span class="ident">Gumbel::new</span>(<span class="number">1.0</span>, <span class="number">2.0</span>), <span class="ident">Gumbel::new</span>(<span class="number">1.0</span>, <span class="number">2.0</span>));
+    }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="rand_distr" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="rand_distr" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>

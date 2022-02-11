@@ -427,6 +427,11 @@
 <span id="420">420</span>
 <span id="421">421</span>
 <span id="422">422</span>
+<span id="423">423</span>
+<span id="424">424</span>
+<span id="425">425</span>
+<span id="426">426</span>
+<span id="427">427</span>
 </pre><pre class="rust"><code><span class="doccomment">//! The hypergeometric distribution.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Distribution</span>;
@@ -436,7 +441,7 @@
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused_imports</span>)]</span>
 <span class="kw">use</span> <span class="ident">num_traits::Float</span>;
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde1&quot;</span>, <span class="ident">derive</span>(<span class="ident">serde::Serialize</span>, <span class="ident">serde::Deserialize</span>))]</span>
 <span class="kw">enum</span> <span class="ident">SamplingMethod</span> {
     <span class="ident">InverseTransform</span>{ <span class="ident">initial_p</span>: <span class="ident">f64</span>, <span class="ident">initial_x</span>: <span class="ident">i64</span> },
@@ -474,7 +479,7 @@
 <span class="doccomment">/// let v = hypergeo.sample(&amp;mut rand::thread_rng());</span>
 <span class="doccomment">/// println!(&quot;{} is from a hypergeometric distribution&quot;, v);</span>
 <span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde1&quot;</span>, <span class="ident">derive</span>(<span class="ident">serde::Serialize</span>, <span class="ident">serde::Deserialize</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Hypergeometric</span> {
     <span class="ident">n1</span>: <span class="ident">u64</span>,
@@ -848,7 +853,12 @@
         <span class="ident">test_hypergeometric_mean_and_variance</span>(<span class="number">10100</span>, <span class="number">10000</span>, <span class="number">1000</span>, <span class="kw-2">&amp;mut</span> <span class="ident">rng</span>);
         <span class="ident">test_hypergeometric_mean_and_variance</span>(<span class="number">100100</span>, <span class="number">100</span>, <span class="number">10000</span>, <span class="kw-2">&amp;mut</span> <span class="ident">rng</span>);
     }
+
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">hypergeometric_distributions_can_be_compared</span>() {
+        <span class="macro">assert_eq!</span>(<span class="ident">Hypergeometric::new</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>), <span class="ident">Hypergeometric::new</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>));
+    }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="rand_distr" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (734368a20 2022-02-07)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="rand_distr" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>
