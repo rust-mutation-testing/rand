@@ -7,7 +7,7 @@
     <h1 class="fqn"><span class="in-band">Macro <a href="index.html">syn</a>::<wbr><a class="macro" href="#">parse_quote</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span></h1><span class="out-of-band"><a class="srclink" href="../src/syn/parse_quote.rs.html#70-74">source</a> · <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span></div><div class="docblock item-decl"><div class="example-wrap"><pre class="rust macro"><code><span class="macro">macro_rules!</span> <span class="ident">parse_quote</span> {
     ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tt</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>) =&gt; { ... };
 }</code></pre></div>
-</div><div class="item-info"><div class="stab portability">This is supported on <strong>crate features <code>parsing</code> and <code>printing</code></strong> only.</div></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Quasi-quotation macro that accepts input like the <a href="https://docs.rs/quote/1.0/quote/index.html"><code>quote!</code></a> macro but uses
+</div><span class="item-info"><div class="stab portability">Available on <strong>crate features <code>parsing</code> and <code>printing</code></strong> only.</div></span><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Quasi-quotation macro that accepts input like the <a href="https://docs.rs/quote/1.0/quote/index.html"><code>quote!</code></a> macro but uses
 type inference to figure out a return type for those tokens.</p>
 <p>The return type can be any syntax tree node that implements the <a href="parse/trait.Parse.html"><code>Parse</code></a>
 trait.</p>
@@ -57,5 +57,5 @@ or inner like <code>#![...]</code></li>
 <p>Panics if the tokens fail to parse as the expected syntax tree type. The
 caller is responsible for ensuring that the input tokens are syntactically
 valid.</p>
-</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="syn" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.61.0-nightly (1eb72580d 2022-03-08)" ></div>
+</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="syn" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (4ca19e09d 2022-04-19)" ></div>
 </body></html>
