@@ -115,8 +115,6 @@
 <span id="108">108</span>
 <span id="109">109</span>
 <span id="110">110</span>
-<span id="111">111</span>
-<span id="112">112</span>
 </pre><pre class="rust"><code><span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">Distribution</span>, <span class="ident">InverseGaussian</span>, <span class="ident">Standard</span>, <span class="ident">StandardNormal</span>};
 <span class="kw">use</span> <span class="ident">num_traits::Float</span>;
 <span class="kw">use</span> <span class="ident">rand::Rng</span>;
@@ -153,7 +151,6 @@
     <span class="ident">StandardNormal</span>: <span class="ident">Distribution</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>,
     <span class="ident">Standard</span>: <span class="ident">Distribution</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>,
 {
-    <span class="ident">alpha</span>: <span class="ident">F</span>,
     <span class="ident">beta</span>: <span class="ident">F</span>,
     <span class="ident">inverse_gaussian</span>: <span class="ident">InverseGaussian</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>,
 }
@@ -182,7 +179,6 @@
         <span class="kw">let</span> <span class="ident">inverse_gaussian</span> <span class="op">=</span> <span class="ident">InverseGaussian::new</span>(<span class="ident">mu</span>, <span class="ident">F::one</span>()).<span class="ident">unwrap</span>();
 
         <span class="prelude-val">Ok</span>(<span class="self">Self</span> {
-            <span class="ident">alpha</span>,
             <span class="ident">beta</span>,
             <span class="ident">inverse_gaussian</span>,
         })
@@ -230,5 +226,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="rand_distr" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (4ca19e09d 2022-04-19)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="rand_distr" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (879aff385 2022-04-20)" ></div>
 </body></html>

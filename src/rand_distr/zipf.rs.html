@@ -388,7 +388,6 @@
 <span id="381">381</span>
 <span id="382">382</span>
 <span id="383">383</span>
-<span id="384">384</span>
 </pre><pre class="rust"><code><span class="comment">// Copyright 2021 Developers of the Rand project.</span>
 <span class="comment">//</span>
 <span class="comment">// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or</span>
@@ -536,7 +535,6 @@
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Zipf</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>
 <span class="kw">where</span> <span class="ident">F</span>: <span class="ident">Float</span>, <span class="ident">Standard</span>: <span class="ident">Distribution</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span> {
-    <span class="ident">n</span>: <span class="ident">F</span>,
     <span class="ident">s</span>: <span class="ident">F</span>,
     <span class="ident">t</span>: <span class="ident">F</span>,
     <span class="ident">q</span>: <span class="ident">F</span>,
@@ -593,7 +591,7 @@
         };
         <span class="macro">debug_assert!</span>(<span class="ident">t</span> <span class="op">&gt;</span> <span class="ident">F::zero</span>());
         <span class="prelude-val">Ok</span>(<span class="ident">Zipf</span> {
-            <span class="ident">n</span>, <span class="ident">s</span>, <span class="ident">t</span>, <span class="ident">q</span>
+            <span class="ident">s</span>, <span class="ident">t</span>, <span class="ident">q</span>
         })
     }
 
@@ -774,5 +772,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="rand_distr" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (4ca19e09d 2022-04-19)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="rand_distr" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (879aff385 2022-04-20)" ></div>
 </body></html>
