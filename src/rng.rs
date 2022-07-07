@@ -374,7 +374,8 @@ macro_rules! impl_fill {
                         )
                     })?;
                     for x in self {
-                    *x = Wrapping(x.0.to_le());
+                        #[cfg_attr(mutest, mutest::ignore)]
+                        { *x = Wrapping(x.0.to_le()) };
                     }
                 }
                 Ok(())

@@ -360,7 +360,8 @@ where
             let key = rng.gen::<f64>().powf(1.0 / weight);
             candidates.push(Element { index, key });
 
-            index += N::one();
+            #[cfg_attr(mutest, mutest::ignore)]
+            { index += N::one() };
         }
 
         // Partially sort the array to find the `amount` elements with the greatest
@@ -395,11 +396,13 @@ where
             let key = rng.gen::<f64>().powf(1.0 / weight);
             candidates.push(Element { index, key });
 
-            index += N::one();
+            #[cfg_attr(mutest, mutest::ignore)]
+            { index += N::one() };
         }
 
         let mut result: Vec<N> = Vec::with_capacity(amount.as_usize());
         while result.len() < amount.as_usize() {
+            #[cfg_attr(mutest, mutest::ignore)]
             result.push(candidates.pop().unwrap().index);
         }
         Ok(IndexVec::from(result))

@@ -115,7 +115,8 @@ impl<X: SampleUniform + PartialOrd> WeightedIndex<X> {
                 return Err(WeightedError::InvalidWeight);
             }
             weights.push(total_weight.clone());
-            total_weight += w.borrow();
+            #[cfg_attr(mutest, mutest::ignore)]
+            { total_weight += w.borrow() };
         }
 
         if total_weight == zero {
@@ -177,8 +178,10 @@ impl<X: SampleUniform + PartialOrd> WeightedIndex<X> {
                 old_w -= &self.cumulative_weights[i - 1];
             }
 
-            total_weight -= &old_w;
-            total_weight += w;
+            #[cfg_attr(mutest, mutest::ignore)]
+            { total_weight -= &old_w };
+            #[cfg_attr(mutest, mutest::ignore)]
+            { total_weight += w };
             prev_i = Some(i);
         }
         if total_weight <= zero {
@@ -200,13 +203,15 @@ impl<X: SampleUniform + PartialOrd> WeightedIndex<X> {
         for i in first_new_index..self.cumulative_weights.len() {
             match next_new_weight {
                 Some(&(j, w)) if i == j => {
-                    cumulative_weight += w;
+                    #[cfg_attr(mutest, mutest::ignore)]
+                    { cumulative_weight += w };
                     next_new_weight = iter.next();
                 }
                 _ => {
                     let mut tmp = self.cumulative_weights[i].clone();
                     tmp -= &prev_weight; // We know this is positive.
-                    cumulative_weight += &tmp;
+                    #[cfg_attr(mutest, mutest::ignore)]
+                    { cumulative_weight += &tmp };
                 }
             }
             prev_weight = cumulative_weight.clone();

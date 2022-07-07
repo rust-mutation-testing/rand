@@ -95,11 +95,13 @@ fn fill_via_chunks<T: Observable>(src: &[T], dest: &mut [u8]) -> (usize, usize) 
         let mut i = 0;
         let mut iter = dest[..byte_len].chunks_exact_mut(size);
         for chunk in &mut iter {
+            #[cfg_attr(mutest, mutest::ignore)]
             chunk.copy_from_slice(src[i].to_le_bytes().as_ref());
             i += 1;
         }
         let chunk = iter.into_remainder();
         if !chunk.is_empty() {
+            #[cfg_attr(mutest, mutest::ignore)]
             chunk.copy_from_slice(&src[i].to_le_bytes().as_ref()[..chunk.len()]);
         }
     }
